@@ -5,13 +5,13 @@ export const portfolioContent: PortfolioContent = {
   name: 'Viktor Hagman',
   title: 'Junior Fullstack Developer',
   intro:
-    'I build simple, practical web applications while learning how frontend and backend work together. My focus is on writing readable code, understanding the basics well, and improving through hands-on projects.',
+    'I am a junior developer building practical fullstack projects to strengthen my frontend and backend skills. My main focus is learning by building, writing clean and readable code, and understanding how real applications are structured end to end.',
   about:
-    'I am learning fullstack development by building projects with React, TypeScript, Node.js, and Express. A lot of my recent work has focused on CRUD apps, working with APIs, and strengthening my backend fundamentals like routing, validation, and application structure.',
-  email: 'viktor@example.com',
-  github: 'https://github.com/your-github',
-  linkedin: 'https://www.linkedin.com/in/your-linkedin',
-  location: 'Based in Sweden',
+    'I have been learning fullstack development by building projects with React, TypeScript, Node.js, Express, and MongoDB. A lot of my recent work has focused on CRUD applications, API integration, backend structure, and improving my understanding of validation, routing, and data flow. I enjoy turning ideas into simple, useful applications and improving a little with each project.',
+  email: 'Viktorhagmanbusiness@gmail.com',
+  github: 'https://github.com/Viktor12513',
+  linkedin: 'https://www.linkedin.com/in/viktor-hagman-065bb0254/',
+  location: 'Helsingborg, Sweden',
   heroStats: [
     { label: 'Projects Built', value: '5' },
     { label: 'Current Focus', value: 'React + Node.js' },
@@ -46,7 +46,7 @@ export const portfolioContent: PortfolioContent = {
       role:
         'Built the full frontend UI, created the REST API, handled validation, and connected the app end to end.',
       liveDemo: '#task-manager-demo',
-      github: 'https://github.com/your-github/task-manager',
+      github: 'https://github.com/Viktor12513/viktor-portfolio/tree/main/projects/task-manager',
       note: 'Local source included in this workspace under projects/task-manager.',
       internalDemo: true
     },
@@ -60,7 +60,7 @@ export const portfolioContent: PortfolioContent = {
       role:
         'Worked on the post creation flow, connected the frontend to API routes, and structured the UI for readability.',
       liveDemo: 'https://example.com/blog-platform',
-      github: 'https://github.com/your-github/blog-platform'
+      github: 'https://github.com/Viktor12513/viktor-portfolio/tree/main/projects/blog-platform'
     },
     {
       id: 3,
@@ -72,7 +72,7 @@ export const portfolioContent: PortfolioContent = {
       role:
         'Created the forms, summary cards, and backend endpoints for saving and reading expense data.',
       liveDemo: '#expense-tracker-demo',
-      github: 'https://github.com/your-github/expense-tracker',
+      github: 'https://github.com/Viktor12513/viktor-portfolio/tree/main/projects/expense-tracker',
       note: 'Local source included in this workspace under projects/expense-tracker.',
       internalDemo: true
     },
@@ -86,7 +86,7 @@ export const portfolioContent: PortfolioContent = {
       role:
         'Built the frontend dashboard, designed the backend routes, modeled the link data, and added analytics tracking.',
       liveDemo: '#url-shortener-demo',
-      github: 'https://github.com/your-github/url-shortener',
+      github: 'https://github.com/Viktor12513/viktor-portfolio/tree/main/projects/url-shortener',
       note: 'Local source included in this workspace under projects/url-shortener.',
       internalDemo: true
     },
@@ -100,7 +100,7 @@ export const portfolioContent: PortfolioContent = {
       role:
         'Designed the layout, implemented note editing features, and built a straightforward backend for storing notes.',
       liveDemo: 'https://example.com/notes-app',
-      github: 'https://github.com/your-github/notes-app'
+      github: 'https://github.com/Viktor12513'
     }
   ]
 };
