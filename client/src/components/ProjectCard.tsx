@@ -12,6 +12,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         target: '_blank',
         rel: 'noreferrer'
       };
+  const primaryActionLabel = project.primaryActionLabel ?? 'Live Demo';
 
   return (
     <article className="panel flex h-full flex-col p-6">
@@ -64,7 +65,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {...liveDemoProps}
           className="inline-flex items-center gap-2 rounded-full bg-slateblue px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#27445f]"
         >
-          Live Demo
+          {primaryActionLabel}
           <ArrowUpRight size={16} />
         </a>
         <a

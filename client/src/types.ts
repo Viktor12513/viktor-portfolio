@@ -9,6 +9,7 @@ export type Project = {
   github: string;
   note?: string;
   internalDemo?: boolean;
+  primaryActionLabel?: string;
 };
 
 export type SkillGroup = {

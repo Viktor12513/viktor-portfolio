@@ -59,8 +59,10 @@ export const portfolioContent: PortfolioContent = {
       features: ['Create and edit blog posts', 'Delete existing posts', 'Basic content management flow'],
       role:
         'Worked on the post creation flow, connected the frontend to API routes, and structured the UI for readability.',
-      liveDemo: 'https://example.com/blog-platform',
-      github: 'https://github.com/Viktor12513/viktor-portfolio/tree/main/projects/blog-platform'
+      liveDemo: 'https://github.com/Viktor12513/viktor-portfolio/tree/main/projects/blog-platform',
+      github: 'https://github.com/Viktor12513/viktor-portfolio/tree/main/projects/blog-platform',
+      primaryActionLabel: 'View Project',
+      note: 'Standalone fullstack project available in this repository under projects/blog-platform.'
     },
     {
       id: 3,
@@ -99,8 +101,10 @@ export const portfolioContent: PortfolioContent = {
       features: ['Add and delete notes', 'Edit note content', 'Simple search'],
       role:
         'Designed the layout, implemented note editing features, and built a straightforward backend for storing notes.',
-      liveDemo: 'https://example.com/notes-app',
-      github: 'https://github.com/Viktor12513'
+      liveDemo: 'https://github.com/Viktor12513',
+      github: 'https://github.com/Viktor12513',
+      primaryActionLabel: 'View GitHub',
+      note: 'This is a supporting project idea in the portfolio and does not have a separate published demo yet.'
     }
   ]
 };
