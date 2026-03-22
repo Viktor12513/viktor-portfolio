@@ -12,6 +12,9 @@ Fullstack/
     task-manager/
       client/              # Task Manager frontend
       server/              # Task Manager backend
+    blog-platform/
+      client/              # Blog Platform frontend
+      server/              # Blog Platform backend
     expense-tracker/
       client/              # Expense Tracker frontend
       server/              # Expense Tracker backend
@@ -28,6 +31,8 @@ Fullstack/
 - Included portfolio project:
   - `projects/task-manager/client`
   - `projects/task-manager/server`
+  - `projects/blog-platform/client`
+  - `projects/blog-platform/server`
   - `projects/expense-tracker/client`
   - `projects/expense-tracker/server`
   - `projects/url-shortener/client`
@@ -88,6 +93,22 @@ cd C:\Users\vigge\Fullstack\projects\expense-tracker\server
 npm run dev
 ```
 
+## Run The Blog Platform Project
+
+Frontend:
+
+```bash
+cd C:\Users\vigge\Fullstack\projects\blog-platform\client
+npm run dev
+```
+
+Backend:
+
+```bash
+cd C:\Users\vigge\Fullstack\projects\blog-platform\server
+npm run dev
+```
+
 ## Run The URL Shortener Project
 
 Frontend:
@@ -114,6 +135,8 @@ npm run dev
   - `client/src/index.css`
 - Embedded Task Manager live demo:
   - `client/src/components/task-demo`
+- Embedded Blog Platform live demo:
+  - `client/src/components/blog-demo`
 - Embedded Expense Tracker live demo:
   - `client/src/components/expense-demo`
 - Embedded URL Shortener live demo:
@@ -122,6 +145,10 @@ npm run dev
   - `server/src/routes/taskRoutes.js`
   - `server/src/controllers/taskController.js`
   - `server/src/models/taskModel.js`
+- Embedded Blog Platform API:
+  - `server/src/routes/postRoutes.js`
+  - `server/src/controllers/postController.js`
+  - `server/src/models/postModel.js`
 - Embedded Expense Tracker API:
   - `server/src/routes/entryRoutes.js`
   - `server/src/controllers/entryController.js`
@@ -149,6 +176,15 @@ npm run dev
 - Expense Tracker API:
   - `projects/expense-tracker/server/src`
 
+## Where To Edit The Blog Platform Project
+
+- Blog Platform UI:
+  - `projects/blog-platform/client/src/App.tsx`
+- Blog Platform components:
+  - `projects/blog-platform/client/src/components/blog`
+- Blog Platform API:
+  - `projects/blog-platform/server/src`
+
 ## Where To Edit The URL Shortener Project
 
 - URL Shortener UI:
@@ -161,9 +197,11 @@ npm run dev
 ## Notes
 
 - The portfolio now includes the Task Manager App as a project inside the repository.
+- The portfolio now also includes the Blog Platform project inside the repository.
 - The portfolio now also includes the Expense Tracker project inside the repository.
 - The portfolio now also includes the URL Shortener with Analytics project inside the repository.
 - The Task Manager `Live Demo` button inside the portfolio opens a working demo section on the portfolio page.
+- The Blog Platform `Live Demo` button inside the portfolio opens a working demo section on the portfolio page.
 - The Expense Tracker `Live Demo` button inside the portfolio opens a working demo section on the portfolio page.
 - The URL Shortener `Live Demo` button inside the portfolio opens a working demo section on the portfolio page.
 - The Task Manager project uses an in-memory store by default, so task data resets when that server restarts.

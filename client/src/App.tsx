@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AlertCircle, FolderCode, Github, Linkedin, LoaderCircle, Mail, MapPin } from 'lucide-react';
+import { blogApi } from './blogApi';
+import type { BlogPost, PostFormValues } from './blogTypes';
+import { BlogDemoForm } from './components/blog-demo/BlogDemoForm';
+import { BlogDemoHeader } from './components/blog-demo/BlogDemoHeader';
+import { BlogDemoList } from './components/blog-demo/BlogDemoList';
+import { BlogDemoStats } from './components/blog-demo/BlogDemoStats';
 import { ContactForm } from './components/ContactForm';
 import { ExpenseDemoForm } from './components/expense-demo/ExpenseDemoForm';
 import { ExpenseDemoHeader } from './components/expense-demo/ExpenseDemoHeader';
@@ -28,6 +34,12 @@ import { useTheme } from './hooks/useTheme';
 
 function App() {
   const { theme, toggleTheme } = useTheme();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
+  const [isLoadingPosts, setIsLoadingPosts] = useState(true);
+  const [isSubmittingPost, setIsSubmittingPost] = useState(false);
+  const [busyPostId, setBusyPostId] = useState<number | null>(null);
+  const [postError, setPostError] = useState('');
   const [tasks, setTasks] = useState<Task[]>([]);
   const [activeFilter, setActiveFilter] = useState<TaskStatusFilter>('all');
   const [editingTask, setEditingTask] = useState<Task | null>(null);
@@ -50,6 +62,24 @@ function App() {
     selectLink,
     copyLink
   } = useShortenerDemo();
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      setIsLoadingPosts(true);
+      setPostError('');
+
+      try {
+        const response = await blogApi.getPosts();
+        setPosts(response);
+      } catch (error) {
+        setPostError(error instanceof Error ? error.message : 'Could not load blog demo data.');
+      } finally {
+        setIsLoadingPosts(false);
+      }
+    };
+
+    void loadPosts();
+  }, []);
 
   useEffect(() => {
     const loadTasks = async () => {
@@ -120,6 +150,47 @@ function App() {
 
     return [...groupedEntries.values()].sort((firstSummary, secondSummary) => secondSummary.total - firstSummary.total);
   }, [entries]);
+
+  const handleSavePost = async (values: PostFormValues) => {
+    setIsSubmittingPost(true);
+    setPostError('');
+
+    try {
+      if (editingPost) {
+        const updatedPost = await blogApi.updatePost(editingPost.id, values);
+        setPosts((currentPosts) =>
+          currentPosts.map((post) => (post.id === updatedPost.id ? updatedPost : post)),
+        );
+        setEditingPost(null);
+        return;
+      }
+
+      const createdPost = await blogApi.createPost(values);
+      setPosts((currentPosts) => [createdPost, ...currentPosts]);
+    } catch (error) {
+      setPostError(error instanceof Error ? error.message : 'Could not save this post.');
+    } finally {
+      setIsSubmittingPost(false);
+    }
+  };
+
+  const handleDeletePost = async (postId: number) => {
+    setBusyPostId(postId);
+    setPostError('');
+
+    try {
+      await blogApi.deletePost(postId);
+      setPosts((currentPosts) => currentPosts.filter((post) => post.id !== postId));
+
+      if (editingPost?.id === postId) {
+        setEditingPost(null);
+      }
+    } catch (error) {
+      setPostError(error instanceof Error ? error.message : 'Could not delete this post.');
+    } finally {
+      setBusyPostId(null);
+    }
+  };
 
   const handleCreateOrUpdateTask = async (values: TaskFormValues) => {
     setIsSubmittingTask(true);
@@ -340,7 +411,8 @@ function App() {
                 <div>
                   <p className="text-sm font-semibold text-ink dark:text-white">Included project source</p>
                   <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                    `projects/task-manager/*`, `projects/expense-tracker/*`, and `projects/url-shortener/*`
+                    `projects/task-manager/*`, `projects/blog-platform/*`, `projects/expense-tracker/*`, and
+                    `projects/url-shortener/*`
                   </p>
                 </div>
               </div>
@@ -405,6 +477,53 @@ function App() {
                       onEdit={setEditingTask}
                       onDelete={handleDeleteTask}
                       onToggleComplete={handleToggleTaskComplete}
+                    />
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="blog-platform-demo" className="section-spacing">
+          <div className="container-shell">
+            <SectionHeading
+              eyebrow="Project Demo"
+              title="Live Blog Platform demo inside the portfolio"
+              description="The Blog Platform project is embedded here as a working content management demo so the portfolio shows the post creation and editing flow directly."
+            />
+
+            <div className="mt-10 space-y-6">
+              <BlogDemoHeader />
+              <BlogDemoStats posts={posts} />
+
+              <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+                <BlogDemoForm
+                  editingPost={editingPost}
+                  onSubmit={handleSavePost}
+                  onCancelEdit={() => setEditingPost(null)}
+                  isSubmitting={isSubmittingPost}
+                />
+
+                <div className="space-y-6">
+                  {postError ? (
+                    <section className="panel flex items-start gap-3 border border-rose-200 p-5 text-rose-700 dark:border-rose-950 dark:text-rose-300">
+                      <AlertCircle className="mt-0.5" size={18} />
+                      <p className="text-sm leading-7">{postError}</p>
+                    </section>
+                  ) : null}
+
+                  {isLoadingPosts ? (
+                    <section className="panel flex min-h-64 flex-col items-center justify-center p-8 text-center">
+                      <LoaderCircle className="animate-spin text-slateblue" size={30} />
+                      <h3 className="mt-5 text-2xl font-semibold text-ink dark:text-white">Loading demo posts</h3>
+                    </section>
+                  ) : (
+                    <BlogDemoList
+                      posts={posts}
+                      busyPostId={busyPostId}
+                      onEdit={setEditingPost}
+                      onDelete={handleDeletePost}
                     />
                   )}
                 </div>

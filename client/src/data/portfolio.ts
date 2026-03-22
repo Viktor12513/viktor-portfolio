@@ -59,10 +59,10 @@ export const portfolioContent: PortfolioContent = {
       features: ['Create and edit blog posts', 'Delete existing posts', 'Basic content management flow'],
       role:
         'Worked on the post creation flow, connected the frontend to API routes, and structured the UI for readability.',
-      liveDemo: 'https://github.com/Viktor12513/viktor-portfolio/tree/main/projects/blog-platform',
+      liveDemo: '#blog-platform-demo',
       github: 'https://github.com/Viktor12513/viktor-portfolio/tree/main/projects/blog-platform',
-      primaryActionLabel: 'View Project',
-      note: 'Standalone fullstack project available in this repository under projects/blog-platform.'
+      note: 'Local source included in this workspace under projects/blog-platform, with an embedded demo in the portfolio.',
+      internalDemo: true
     },
     {
       id: 3,
