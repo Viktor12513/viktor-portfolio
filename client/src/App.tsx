@@ -362,11 +362,29 @@ function App() {
         <section id="about" className="section-spacing">
           <div className="container-shell">
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-              <SectionHeading
-                eyebrow="About"
-                title="Learning fullstack development one project at a time"
-                description="A straightforward introduction that feels honest and professional."
-              />
+              <div className="max-w-2xl">
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-slateblue dark:text-slate-300">
+                  About
+                </p>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink dark:text-white sm:text-4xl">
+                  Learning fullstack development one project at a time
+                </h2>
+                <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-300">
+                  I have been building hands-on projects to improve how I work across both frontend
+                  and backend development. My goal is to keep turning what I learn into practical
+                  apps that feel clear, useful, and well structured.
+                </p>
+                <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-300">
+                  Most of my recent work has focused on CRUD flows, API integration, validation,
+                  and understanding how data moves through an application from the UI to the server.
+                </p>
+
+                <div className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                  <p>Building projects that are simple, realistic, and easy to explain</p>
+                  <p>Improving confidence with React, TypeScript, Node.js, and Express</p>
+                  <p>Practicing clean structure, readable code, and practical problem solving</p>
+                </div>
+              </div>
 
               <div className="panel p-8">
                 <p className="text-base leading-8 text-slate-600 dark:text-slate-300">{portfolioContent.about}</p>
@@ -400,7 +418,7 @@ function App() {
             <SectionHeading
               eyebrow="Projects"
               title="Realistic projects that show practical fullstack skills"
-              description="The Task Manager App below is included in this workspace as a separate fullstack project inside the portfolio repository."
+              description="These projects are meant to show practical frontend and backend skills through realistic junior-level applications, with embedded demos for the main portfolio pieces."
             />
 
             <div className="panel mt-8 flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
@@ -430,8 +448,8 @@ function App() {
           <div className="container-shell">
             <SectionHeading
               eyebrow="Project Demo"
-              title="Live Task Manager demo inside the portfolio"
-              description="The Task Manager project is showcased here as a working embedded demo so the Live Demo button can open something real inside the portfolio."
+              title="Task Manager Demo: practicing everyday CRUD workflows"
+              description="This embedded Task Manager shows the core flow of a simple fullstack app: creating tasks, updating details, marking items as complete, and filtering results through a connected API."
             />
 
             <div className="mt-10 space-y-6">
@@ -489,8 +507,8 @@ function App() {
           <div className="container-shell">
             <SectionHeading
               eyebrow="Project Demo"
-              title="Live Blog Platform demo inside the portfolio"
-              description="The Blog Platform project is embedded here as a working content management demo so the portfolio shows the post creation and editing flow directly."
+              title="Blog Platform Demo: a simple content management workflow"
+              description="This section highlights a beginner-friendly blog dashboard where posts can be written, edited, published, and removed. It is meant to show form handling, reusable components, and a clean REST-based content flow."
             />
 
             <div className="mt-10 space-y-6">
@@ -536,8 +554,8 @@ function App() {
           <div className="container-shell">
             <SectionHeading
               eyebrow="Project Demo"
-              title="Live Expense Tracker demo inside the portfolio"
-              description="The Expense Tracker project is also embedded here as a working demo so the Live Demo button opens a real feature, not a placeholder."
+              title="Expense Tracker Demo: tracking entries and viewing summaries"
+              description="This embedded Expense Tracker focuses on adding income and expense entries, removing them, and presenting totals in a clear way. It shows how frontend state, form validation, and backend data can work together in a simple project."
             />
 
             <div className="mt-10 space-y-6">
@@ -574,8 +592,8 @@ function App() {
           <div className="container-shell">
             <SectionHeading
               eyebrow="Project Demo"
-              title="Live URL Shortener demo inside the portfolio"
-              description="This embedded demo focuses on the backend workflow: creating short links, storing them, and viewing click analytics from the portfolio itself."
+              title="URL Shortener Demo: link creation and basic analytics"
+              description="This demo is more backend-focused. It shows how a short link can be created, stored, and tracked, with simple analytics that display click activity and make the request flow easier to understand."
             />
 
             <div className="mt-10 space-y-6">
