@@ -61,6 +61,29 @@ cd C:\Users\vigge\Fullstack
 npm run dev
 ```
 
+## Connect Frontend And Backend In Production
+
+The portfolio frontend and backend can be deployed separately.
+
+Frontend:
+
+- Deploy `client` to Vercel
+- Set `VITE_API_BASE_URL` to your deployed backend URL
+
+Backend:
+
+- Deploy `server` to a Node host such as Render or Railway
+- Set `FRONTEND_URL` to your deployed frontend URL
+- Set `PUBLIC_BASE_URL` to your deployed backend URL
+
+Example:
+
+- Frontend URL: `https://your-portfolio.vercel.app`
+- Backend URL: `https://your-portfolio-api.onrender.com`
+- `VITE_API_BASE_URL=https://your-portfolio-api.onrender.com`
+- `FRONTEND_URL=https://your-portfolio.vercel.app`
+- `PUBLIC_BASE_URL=https://your-portfolio-api.onrender.com`
+
 ## Run The Task Manager Project
 
 Frontend:

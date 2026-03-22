@@ -2,7 +2,8 @@ import { shortLinkStore } from '../data/shortLinkStore.js';
 import { generatePortfolioShortCode } from '../utils/generatePortfolioShortCode.js';
 
 function mapShortUrl(shortCode) {
-  return `http://localhost:5000/s/${shortCode}`;
+  const baseUrl = process.env.PUBLIC_BASE_URL?.replace(/\/+$/, '') ?? 'http://localhost:5000';
+  return `${baseUrl}/s/${shortCode}`;
 }
 
 export const ShortLinkModel = {

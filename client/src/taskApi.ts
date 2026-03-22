@@ -1,3 +1,4 @@
+import { buildApiUrl } from './apiConfig';
 import type { Task, TaskFormValues } from './taskTypes';
 
 async function handleResponse<T>(response: Response): Promise<T> {
@@ -11,11 +12,11 @@ async function handleResponse<T>(response: Response): Promise<T> {
 
 export const taskApi = {
   getTasks: async () => {
-    const response = await fetch('/api/tasks');
+    const response = await fetch(buildApiUrl('/api/tasks'));
     return handleResponse<Task[]>(response);
   },
   createTask: async (payload: TaskFormValues) => {
-    const response = await fetch('/api/tasks', {
+    const response = await fetch(buildApiUrl('/api/tasks'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -24,7 +25,7 @@ export const taskApi = {
     return handleResponse<Task>(response);
   },
   updateTask: async (taskId: number, payload: Partial<TaskFormValues> & { completed?: boolean }) => {
-    const response = await fetch(`/api/tasks/${taskId}`, {
+    const response = await fetch(buildApiUrl(`/api/tasks/${taskId}`), {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -33,7 +34,7 @@ export const taskApi = {
     return handleResponse<Task>(response);
   },
   deleteTask: async (taskId: number) => {
-    const response = await fetch(`/api/tasks/${taskId}`, {
+    const response = await fetch(buildApiUrl(`/api/tasks/${taskId}`), {
       method: 'DELETE'
     });
 

@@ -1,3 +1,4 @@
+import { buildApiUrl } from './apiConfig';
 import type { BlogPost, PostFormValues } from './blogTypes';
 
 async function handleResponse<T>(response: Response): Promise<T> {
@@ -11,11 +12,11 @@ async function handleResponse<T>(response: Response): Promise<T> {
 
 export const blogApi = {
   getPosts: async () => {
-    const response = await fetch('/api/posts');
+    const response = await fetch(buildApiUrl('/api/posts'));
     return handleResponse<BlogPost[]>(response);
   },
   createPost: async (payload: PostFormValues) => {
-    const response = await fetch('/api/posts', {
+    const response = await fetch(buildApiUrl('/api/posts'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -24,7 +25,7 @@ export const blogApi = {
     return handleResponse<BlogPost>(response);
   },
   updatePost: async (postId: number, payload: PostFormValues) => {
-    const response = await fetch(`/api/posts/${postId}`, {
+    const response = await fetch(buildApiUrl(`/api/posts/${postId}`), {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -33,7 +34,7 @@ export const blogApi = {
     return handleResponse<BlogPost>(response);
   },
   deletePost: async (postId: number) => {
-    const response = await fetch(`/api/posts/${postId}`, {
+    const response = await fetch(buildApiUrl(`/api/posts/${postId}`), {
       method: 'DELETE'
     });
 

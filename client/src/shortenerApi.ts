@@ -1,3 +1,4 @@
+import { buildApiUrl } from './apiConfig';
 import type { ShortLink } from './shortenerTypes';
 
 async function handleResponse<T>(response: Response): Promise<T> {
@@ -11,11 +12,11 @@ async function handleResponse<T>(response: Response): Promise<T> {
 
 export const shortenerApi = {
   getLinks: async () => {
-    const response = await fetch('/api/short-links');
+    const response = await fetch(buildApiUrl('/api/short-links'));
     return handleResponse<ShortLink[]>(response);
   },
   createLink: async (originalUrl: string) => {
-    const response = await fetch('/api/shorten', {
+    const response = await fetch(buildApiUrl('/api/shorten'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ originalUrl })
@@ -24,7 +25,7 @@ export const shortenerApi = {
     return handleResponse<ShortLink>(response);
   },
   getLinkDetails: async (linkId: string) => {
-    const response = await fetch(`/api/short-links/${linkId}`);
+    const response = await fetch(buildApiUrl(`/api/short-links/${linkId}`));
     return handleResponse<ShortLink>(response);
   }
 };
