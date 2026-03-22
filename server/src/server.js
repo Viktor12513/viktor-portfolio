@@ -11,9 +11,45 @@ const app = express();
 const PORT = Number(process.env.PORT) || 5000;
 const frontendUrl = process.env.FRONTEND_URL;
 
+function isAllowedOrigin(origin) {
+  if (!origin) {
+    return true;
+  }
+
+  const allowedOrigins = [frontendUrl, 'http://localhost:5173', 'http://127.0.0.1:5173'].filter(Boolean);
+
+  if (allowedOrigins.includes(origin)) {
+    return true;
+  }
+
+  try {
+    const parsedOrigin = new URL(origin);
+    const hostname = parsedOrigin.hostname;
+
+    if (hostname.endsWith('.vercel.app')) {
+      return true;
+    }
+
+    if (hostname === 'www.viktorhagman.se' || hostname === 'viktorhagman.se') {
+      return true;
+    }
+  } catch {
+    return false;
+  }
+
+  return false;
+}
+
 app.use(
   cors({
-    origin: frontendUrl ? [frontendUrl, 'http://localhost:5173'] : true
+    origin(origin, callback) {
+      if (isAllowedOrigin(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error('Not allowed by CORS'));
+    }
   }),
 );
 app.use(express.json());
