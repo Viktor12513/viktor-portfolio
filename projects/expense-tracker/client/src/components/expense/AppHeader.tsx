@@ -15,9 +15,12 @@ export function AppHeader({ theme, onToggleTheme }: AppHeaderProps) {
           </div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slateblue dark:text-slate-300">
-              Fullstack Project
+              Standalone fullstack app
             </p>
             <h1 className="text-2xl font-semibold tracking-tight text-ink dark:text-white">Expense Tracker</h1>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+              A simple dashboard for tracking money coming in and going out.
+            </p>
           </div>
         </div>
 

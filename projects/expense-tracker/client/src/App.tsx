@@ -3,6 +3,7 @@ import { StatusBanner } from './components/common/StatusBanner';
 import { AppHeader } from './components/expense/AppHeader';
 import { CategorySummary } from './components/expense/CategorySummary';
 import { ExpenseForm } from './components/expense/ExpenseForm';
+import { HowItWorks } from './components/expense/HowItWorks';
 import { ProjectHero } from './components/expense/ProjectHero';
 import { RecentEntries } from './components/expense/RecentEntries';
 import { SummaryCards } from './components/expense/SummaryCards';
@@ -31,7 +32,10 @@ function App() {
           {errorMessage ? <StatusBanner message={errorMessage} /> : null}
 
           <section className="grid gap-6 xl:grid-cols-[0.8fr_1.2fr]">
-            <CategorySummary summaries={categorySummaries} />
+            <div className="space-y-6">
+              <HowItWorks />
+              <CategorySummary summaries={categorySummaries} />
+            </div>
 
             {isLoading ? (
               <LoadingPanel

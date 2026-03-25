@@ -1,3 +1,4 @@
+import { buildApiUrl } from './apiConfig';
 import type { ExpenseEntry } from '../types/expense';
 
 type ExpensePayload = {
@@ -20,11 +21,11 @@ async function handleResponse<T>(response: Response): Promise<T> {
 
 export const expenseApi = {
   getEntries: async () => {
-    const response = await fetch('/api/entries');
+    const response = await fetch(buildApiUrl('/api/entries'));
     return handleResponse<ExpenseEntry[]>(response);
   },
   createEntry: async (payload: ExpensePayload) => {
-    const response = await fetch('/api/entries', {
+    const response = await fetch(buildApiUrl('/api/entries'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -33,7 +34,7 @@ export const expenseApi = {
     return handleResponse<ExpenseEntry>(response);
   },
   deleteEntry: async (entryId: number) => {
-    const response = await fetch(`/api/entries/${entryId}`, {
+    const response = await fetch(buildApiUrl(`/api/entries/${entryId}`), {
       method: 'DELETE'
     });
 

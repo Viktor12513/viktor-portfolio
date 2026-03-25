@@ -1,23 +1,41 @@
 # Expense Tracker
 
-A clean beginner-friendly fullstack expense tracker built for the portfolio workspace.
+A standalone junior-friendly fullstack project for tracking income and expenses with a clean dashboard, category summaries, and a simple Express API.
 
 ## Tech Stack
 
 - Frontend: React + TypeScript + Vite + Tailwind CSS
 - Backend: Node.js + Express
-- Database: in-memory fallback by default
+- Data: In-memory store by default
 
 ## Features
 
 - Add income and expense entries
-- Delete entries
-- Show total balance
-- Show category summaries
-- Simple summary UI for financial overview
-- Validation, loading states, and error handling
+- Delete entries from the dashboard
+- View total balance, income, and expenses
+- Review grouped category totals
+- Show loading, validation, and error states
 
-## Step-by-Step Setup
+## Project Structure
+
+```text
+expense-tracker/
+  client/
+    src/
+      components/
+      hooks/
+      lib/
+      types/
+  server/
+    src/
+      controllers/
+      data/
+      models/
+      routes/
+      utils/
+```
+
+## Local Setup
 
 1. Open a terminal in `C:\Users\vigge\Fullstack\projects\expense-tracker`
 2. Install frontend dependencies:
@@ -34,27 +52,34 @@ cd ..\server
 npm install
 ```
 
-## How To Run Frontend
+## Run The App
+
+Frontend:
 
 ```bash
 cd C:\Users\vigge\Fullstack\projects\expense-tracker\client
 npm run dev
 ```
 
-Frontend URL:
-
-- [http://localhost:5173](http://localhost:5173)
-
-## How To Run Backend
+Backend:
 
 ```bash
 cd C:\Users\vigge\Fullstack\projects\expense-tracker\server
 npm run dev
 ```
 
-Backend URL:
+## Environment Variables
 
-- [http://localhost:5000](http://localhost:5000)
+Frontend:
+
+- Copy `client/.env.example` to `.env`
+- Set `VITE_API_BASE_URL` when deploying the frontend separately
+
+Backend:
+
+- Copy `server/.env.example` to `.env`
+- Set `FRONTEND_URL` when deploying the backend separately
+- Set `PORT` only if your host requires it
 
 ## Example API Routes
 
@@ -76,13 +101,23 @@ Backend URL:
 }
 ```
 
-## Where To Customize Things
+## Deployment Notes
+
+- Frontend can be deployed on Vercel from `projects/expense-tracker/client`
+- Backend can be deployed on Render from `projects/expense-tracker/server`
+- In production, set `VITE_API_BASE_URL` to your backend URL
+- In production, set `FRONTEND_URL` on the backend to your deployed frontend URL
+
+## Where To Customize
 
 - Main page layout:
   - `client/src/App.tsx`
+- Header and hero:
+  - `client/src/components/expense/AppHeader.tsx`
+  - `client/src/components/expense/ProjectHero.tsx`
 - Form fields and validation:
   - `client/src/components/expense/ExpenseForm.tsx`
-- Summary cards and breakdown:
+- Summary UI:
   - `client/src/components/expense/SummaryCards.tsx`
   - `client/src/components/expense/CategorySummary.tsx`
 - Backend starter data:
@@ -93,4 +128,4 @@ Backend URL:
 ## Notes
 
 - The project uses an in-memory store, so entries reset when the server restarts.
-- The structure is intentionally simple so it stays beginner-friendly and easy to explain.
+- The code is intentionally kept simple and readable so it stays easy to explain in interviews.

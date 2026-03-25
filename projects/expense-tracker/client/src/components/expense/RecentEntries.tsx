@@ -13,7 +13,7 @@ export function RecentEntries({ entries, busyEntryId, onDelete }: RecentEntriesP
       <section className="panel p-8 text-center">
         <h2 className="text-2xl font-semibold text-ink dark:text-white">No entries yet</h2>
         <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-          Add your first income or expense entry to start tracking your balance.
+          Add your first income or expense entry to start building your dashboard and category summary.
         </p>
       </section>
     );
