@@ -15,11 +15,14 @@ export function AppHeader({ theme, onToggleTheme }: AppHeaderProps) {
           </div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slateblue dark:text-slate-300">
-              Backend-focused project
+              Standalone fullstack app
             </p>
             <h1 className="text-2xl font-semibold tracking-tight text-ink dark:text-white">
               URL Shortener with Analytics
             </h1>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+              A short-link dashboard with redirects, stored links, and simple click analytics.
+            </p>
           </div>
         </div>
 

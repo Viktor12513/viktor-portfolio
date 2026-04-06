@@ -1,6 +1,7 @@
 import { FeedbackBanner } from './components/common/FeedbackBanner';
 import { LoadingPanel } from './components/common/LoadingPanel';
 import { AppHeader } from './components/shortener/AppHeader';
+import { HowItWorks } from './components/shortener/HowItWorks';
 import { LinkAnalytics } from './components/shortener/LinkAnalytics';
 import { LinkList } from './components/shortener/LinkList';
 import { ProjectHero } from './components/shortener/ProjectHero';
@@ -39,6 +40,7 @@ function App() {
             totalClicks={stats.totalClicks}
             activeLinks={stats.activeLinks}
           />
+          <HowItWorks />
 
           {errorMessage ? <FeedbackBanner message={errorMessage} /> : null}
 
@@ -46,7 +48,7 @@ function App() {
             {isLoading ? (
               <LoadingPanel
                 title="Loading links"
-                description="The app is fetching shortened links from the backend API."
+                description="The app is fetching shortened links and preparing the analytics overview."
               />
             ) : (
               <LinkList

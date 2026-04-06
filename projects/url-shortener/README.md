@@ -1,6 +1,6 @@
 # URL Shortener with Analytics
 
-A backend-focused fullstack app for shortening URLs and tracking usage analytics.
+A standalone backend-focused fullstack project for shortening URLs, redirecting visitors, and tracking click analytics with MongoDB and Mongoose.
 
 ## Tech Stack
 
@@ -13,13 +13,11 @@ A backend-focused fullstack app for shortening URLs and tracking usage analytics
 - Create short URLs from long links
 - Redirect users from short codes to original URLs
 - Store links in MongoDB
-- Track click counts
-- Store creation date
-- Store visit timestamps
-- Optional expiration date for links
-- Basic rate limiting and request logging
+- Track click counts and visit timestamps
+- Support optional expiration dates
+- Include request logging and basic rate limiting
 
-## Cleaner Structure
+## Project Structure
 
 Frontend:
 
@@ -41,34 +39,50 @@ Backend:
 ## Setup Instructions
 
 1. Make sure MongoDB is running locally or update the connection string in `.env`
-2. Copy `.env.example` to `.env`
-3. Install frontend dependencies:
+2. Copy `client/.env.example` to `.env` if needed
+3. Copy `server/.env.example` to `.env`
+4. Install frontend dependencies:
 
 ```bash
 cd C:\Users\vigge\Fullstack\projects\url-shortener\client
 npm install
 ```
 
-4. Install backend dependencies:
+5. Install backend dependencies:
 
 ```bash
 cd C:\Users\vigge\Fullstack\projects\url-shortener\server
 npm install
 ```
 
-## How To Run Frontend
+## Run The App
+
+Frontend:
 
 ```bash
 cd C:\Users\vigge\Fullstack\projects\url-shortener\client
 npm run dev
 ```
 
-## How To Run Backend
+Backend:
 
 ```bash
 cd C:\Users\vigge\Fullstack\projects\url-shortener\server
 npm run dev
 ```
+
+## Environment Variables
+
+Frontend:
+
+- `VITE_API_BASE_URL=http://localhost:5000`
+
+Backend:
+
+- `PORT=5000`
+- `MONGODB_URI=mongodb://127.0.0.1:27017/url-shortener`
+- `FRONTEND_URL=http://localhost:5173`
+- `PUBLIC_BASE_URL=http://localhost:5000`
 
 ## Example API Requests
 
@@ -108,6 +122,14 @@ GET /:shortCode
 
 Short codes are generated with `nanoid` using a custom alphabet of letters and numbers. Each generated code is 7 characters long, and the backend checks MongoDB before saving to make sure the code is unique.
 
+## Deployment Notes
+
+- Frontend can be deployed on Vercel from `projects/url-shortener/client`
+- Backend can be deployed on Render from `projects/url-shortener/server`
+- In production, set `VITE_API_BASE_URL` to your backend URL
+- In production, set `FRONTEND_URL` to your deployed frontend URL
+- In production, set `PUBLIC_BASE_URL` to your deployed backend URL so generated short links are correct
+
 ## Where To Customize Things
 
 - Frontend page layout:
@@ -126,3 +148,8 @@ Short codes are generated with `nanoid` using a custom alphabet of letters and n
   - `server/src/services/mapLinkResponse.js`
 - Validation middleware:
   - `server/src/middleware/validateShortenRequest.js`
+
+## Notes
+
+- This project requires MongoDB to be running unless you point `MONGODB_URI` to another database instance.
+- The code is intentionally organized clearly so the backend flow is easier to explain in interviews.

@@ -14,7 +14,7 @@ export function PostList({ posts, busyPostId, onEdit, onDelete }: PostListProps)
       <section className="panel p-8 text-center">
         <h2 className="text-2xl font-semibold text-ink dark:text-white">No posts yet</h2>
         <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-          Create your first blog post to start building the content dashboard.
+          Create your first post to start building the content dashboard and editorial workflow.
         </p>
       </section>
     );

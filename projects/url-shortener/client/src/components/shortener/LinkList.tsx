@@ -14,7 +14,7 @@ export function LinkList({ links, selectedLinkId, onSelectLink, onCopyLink }: Li
       <section className="panel p-8 text-center">
         <h2 className="text-2xl font-semibold text-ink dark:text-white">No links yet</h2>
         <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-          Create your first short link to start tracking clicks and analytics.
+          Create your first short link to start tracking redirects, clicks, and visit activity.
         </p>
       </section>
     );

@@ -1,6 +1,7 @@
 import { LoadingPanel } from './components/common/LoadingPanel';
 import { StatusBanner } from './components/common/StatusBanner';
 import { AppHeader } from './components/tasks/AppHeader';
+import { HowItWorks } from './components/tasks/HowItWorks';
 import { ProjectHero } from './components/tasks/ProjectHero';
 import { TaskFilters } from './components/tasks/TaskFilters';
 import { TaskForm } from './components/tasks/TaskForm';
@@ -48,6 +49,8 @@ function App() {
 
           {errorMessage ? <StatusBanner message={errorMessage} /> : null}
 
+          <HowItWorks />
+
           <section className="panel p-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -69,7 +72,7 @@ function App() {
             <LoadingPanel
               mode="error"
               title="Could not load tasks"
-              description="Make sure the Express server is running on port 5000, then refresh the page."
+              description="Make sure the backend is running and the API URL is configured correctly, then refresh the page."
             />
           ) : (
             <TaskList

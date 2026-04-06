@@ -2,14 +2,14 @@ export function ProjectHero() {
   return (
     <section className="panel p-7 sm:p-8">
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slateblue dark:text-slate-300">
-        Beginner-friendly CRUD app
+        Standalone project
       </p>
       <h2 className="mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-ink dark:text-white sm:text-5xl">
-        Manage tasks with a clean React frontend and a simple Express API.
+        Manage tasks with a clean interface and a simple backend API.
       </h2>
       <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300">
-        This project focuses on the fundamentals: creating, editing, deleting, completing, and filtering tasks while
-        keeping the code easy to read and explain.
+        This app focuses on practical CRUD workflows: creating, editing, deleting, completing, and filtering tasks
+        while keeping both the frontend and backend easy to read and explain.
       </p>
 
       <div className="mt-8 flex flex-wrap gap-3">

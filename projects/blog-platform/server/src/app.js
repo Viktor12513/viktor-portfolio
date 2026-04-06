@@ -3,8 +3,13 @@ import express from 'express';
 import postRoutes from './routes/postRoutes.js';
 
 const app = express();
+const frontendUrl = process.env.FRONTEND_URL;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: frontendUrl ? [frontendUrl, 'http://localhost:5173', 'http://127.0.0.1:5173'] : true
+  }),
+);
 app.use(express.json());
 
 app.get('/api/health', (_req, res) => {

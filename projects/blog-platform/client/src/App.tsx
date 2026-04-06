@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AlertCircle, LoaderCircle } from 'lucide-react';
 import { AppHeader } from './components/blog/AppHeader';
+import { HowItWorks } from './components/blog/HowItWorks';
 import { PostForm } from './components/blog/PostForm';
 import { PostList } from './components/blog/PostList';
 import { PostStats } from './components/blog/PostStats';
@@ -93,6 +94,7 @@ function App() {
           </section>
 
           <PostStats posts={posts} />
+          <HowItWorks />
 
           {errorMessage ? (
             <section className="panel flex items-start gap-3 border border-rose-200 p-5 text-rose-700 dark:border-rose-950 dark:text-rose-300">
@@ -106,7 +108,7 @@ function App() {
               <LoaderCircle className="animate-spin text-slateblue" size={30} />
               <h2 className="mt-5 text-2xl font-semibold text-ink dark:text-white">Loading posts</h2>
               <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                The app is fetching posts from the backend API.
+                The app is fetching posts from the backend API and preparing the content dashboard.
               </p>
             </section>
           ) : (

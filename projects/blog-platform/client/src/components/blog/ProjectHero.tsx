@@ -2,13 +2,13 @@ export function ProjectHero() {
   return (
     <section className="panel p-7 sm:p-8">
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slateblue dark:text-slate-300">
-        Beginner-friendly content app
+        Standalone project
       </p>
       <h2 className="mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-ink dark:text-white sm:text-5xl">
-        Create, edit, publish, and delete blog posts with a simple fullstack workflow.
+        Create, edit, publish, and manage blog posts in one simple content dashboard.
       </h2>
       <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300">
-        This project focuses on form handling, reusable components, CRUD routes, and showing content clearly in a small dashboard.
+        This app focuses on a practical editorial workflow: writing posts, updating them, saving drafts, and managing content through a clean interface and a simple backend API.
       </p>
 
       <div className="mt-8 flex flex-wrap gap-3">

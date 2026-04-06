@@ -1,3 +1,4 @@
+import { buildApiUrl } from './apiConfig';
 import type { Task, TaskPayload } from '../types/task';
 
 const API_BASE_URL = '/api/tasks';
@@ -13,11 +14,11 @@ async function handleResponse<T>(response: Response): Promise<T> {
 
 export const taskApi = {
   getTasks: async () => {
-    const response = await fetch(API_BASE_URL);
+    const response = await fetch(buildApiUrl(API_BASE_URL));
     return handleResponse<Task[]>(response);
   },
   createTask: async (payload: TaskPayload) => {
-    const response = await fetch(API_BASE_URL, {
+    const response = await fetch(buildApiUrl(API_BASE_URL), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -26,7 +27,7 @@ export const taskApi = {
     return handleResponse<Task>(response);
   },
   updateTask: async (taskId: number, payload: Partial<TaskPayload>) => {
-    const response = await fetch(`${API_BASE_URL}/${taskId}`, {
+    const response = await fetch(buildApiUrl(`${API_BASE_URL}/${taskId}`), {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -35,7 +36,7 @@ export const taskApi = {
     return handleResponse<Task>(response);
   },
   deleteTask: async (taskId: number) => {
-    const response = await fetch(`${API_BASE_URL}/${taskId}`, {
+    const response = await fetch(buildApiUrl(`${API_BASE_URL}/${taskId}`), {
       method: 'DELETE'
     });
 
